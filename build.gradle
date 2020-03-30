@@ -14,4 +14,14 @@ repositories {
 
 dependencies {
     compileOnly('org.spigotmc:spigot-api:1.8.8-R0.1-SNAPSHOT')
+    compile group: 'com.zaxxer', name: 'HikariCP', version: '2.3.2'
+    compile group: 'org.postgresql', name: 'postgresql', version: '42.2.6'
+}
+
+jar {
+    from {
+        configurations.compile.collect {
+            it.isDirectory() ? it : zipTree(it)
+        }
+    }
 }

@@ -14,8 +14,9 @@ public class DatabaseCredentialsConfigProvider extends ConfigProvider {
     private void setDefaults() {
         FileConfiguration cfg = getFileConfiguration();
         cfg.options().copyDefaults(true);
+        cfg.addDefault("database_type", "mysql");
         cfg.addDefault("hostname", "127.0.0.1");
-        cfg.addDefault("port", "3306");
+        cfg.addDefault("port", 3306);
         cfg.addDefault("database", "DatabaseName");
         cfg.addDefault("user", "username");
         cfg.addDefault("password", "*************");
