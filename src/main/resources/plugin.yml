@@ -1,0 +1,7 @@
+main: me.songe.castlestars.CastleStarsPlugin
+name: CastleStars
+version: 0.2
+author: songe
+
+commands:
+
