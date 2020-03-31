@@ -12,12 +12,12 @@ public class PostgresDatabase implements Database {
     private HikariDataSource hikariDataSource;
 
     private String hostname;
-    private String port;
+    private int port;
     private String database;
     private String user;
     private String password;
 
-    public PostgresDatabase(String hostname, String port, String database, String user, String password) {
+    public PostgresDatabase(String hostname, int port, String database, String user, String password) {
         this.hostname = hostname;
         this.port = port;
         this.database = database;
@@ -27,7 +27,7 @@ public class PostgresDatabase implements Database {
 
     @Override
     public Connection getConnection() {
-        if(!isConnected())
+        if (!isConnected())
             return null;
         try {
             return hikariDataSource.getConnection();
@@ -44,10 +44,10 @@ public class PostgresDatabase implements Database {
 
     @Override
     public boolean isConnected() {
-       if (hikariDataSource == null) {
-           return false;
-       }
-       return true;
+        if (hikariDataSource == null) {
+            return false;
+        }
+        return true;
     }
 
     @Override

@@ -12,12 +12,12 @@ public class MySQLDatabase implements Database {
     private HikariDataSource hikariDataSource;
 
     private String hostname;
-    private String port;
+    private int port;
     private String database;
     private String user;
     private String password;
 
-    public MySQLDatabase(String hostname, String port, String database, String user, String password) {
+    public MySQLDatabase(String hostname, int port, String database, String user, String password) {
         this.hostname = hostname;
         this.port = port;
         this.database = database;
@@ -55,10 +55,10 @@ public class MySQLDatabase implements Database {
         try {
             HikariConfig hikariConfig = new HikariConfig();
 
-            hikariConfig.setJdbcUrl("jdbc:postgresql://" + hostname + ":" + port + "/" + database);
+            hikariConfig.setJdbcUrl("jdbc:mysql://" + hostname + ":" + port + "/" + database);
             hikariConfig.setUsername(user);
             hikariConfig.setPassword(password);
-            hikariConfig.setDriverClassName("org.postgresql.Driver");
+            hikariConfig.setDriverClassName("com.mysql.jdbc.Driver");
             hikariConfig.addDataSourceProperty("cachePrepStmts", "true");
             hikariConfig.addDataSourceProperty("prepStmtCacheSize", "250");
             hikariConfig.addDataSourceProperty("prepStmtCacheSqlLimit", "2048");
