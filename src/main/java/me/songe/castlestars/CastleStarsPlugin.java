@@ -52,7 +52,10 @@ public class CastleStarsPlugin extends JavaPlugin {
         databaseType = Arrays.stream(DatabaseType.values()).filter(type -> {
             return type.name().equalsIgnoreCase(databaseConfigProvider.getFileConfiguration().getString("database_type"));
         }).findFirst().orElse(DatabaseType.MYSQL);
+    }
 
+    public Database getCustomDatabase() {
+        return database;
     }
 
 }
